@@ -112,17 +112,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`lote` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `usuarior_id` INT NULL,
+  `usuario_id` INT NULL,
   `quantidade` INT NULL,
   `peso` VARCHAR(45) NULL,
   `especie_id` INT NULL,
   `fornecedor_id` INT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE INDEX `Id_UNIQUE` (`Id` ASC) VISIBLE,
-  INDEX `FK_usuario_id_idx` (`usuarior_id` ASC) VISIBLE,
+  INDEX `FK_usuario_id_idx` (`usuario_id` ASC) VISIBLE,
   INDEX `FK_especie_id_idx` (`especie_id` ASC) VISIBLE,
   CONSTRAINT `FK_usuario_id`
-    FOREIGN KEY (`usuarior_id`)
+    FOREIGN KEY (`usuario_id`)
     REFERENCES `mydb`.`usuario` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
@@ -508,4 +508,5 @@ DELIMITER ;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
