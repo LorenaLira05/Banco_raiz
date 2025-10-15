@@ -2,9 +2,8 @@ DELIMITER $$
 
 CREATE PROCEDURE criar_pedido (
     IN p_usuario_id INT,
-    IN p_status_id INT,
-    IN p_data DATE,
-    IN p_veiculo VARCHAR(100)
+	IN p_data DATE,
+    IN p_status_id INT
 )
 BEGIN
     -- Insere um novo pedido
@@ -14,5 +13,3 @@ BEGIN
     -- Retorna o ID do pedido recém-criado
     SELECT LAST_INSERT_ID() AS novo_pedido_id;
 END$$
-
-DELIMITER ;
