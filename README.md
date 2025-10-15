@@ -72,11 +72,5 @@ Essas views são ideais para **dashboards e relatórios de transparência públi
 
 ---
 
-## 👩‍💻 Autoria
-Projeto desenvolvido por **Lorena Lira**, **Ricardo Rafael** e **Maria Clara** 💚  
-Acadêmicos de **Análise e Desenvolvimento de Sistemas**.
-
----
-
 ## 🪴 Licença
 Este projeto é de uso acadêmico. Você pode consultar, estudar e adaptar livremente, desde que mantenha os créditos do autor.
