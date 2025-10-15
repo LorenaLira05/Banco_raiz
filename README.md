@@ -57,13 +57,26 @@ Essas views são ideais para **dashboards e relatórios de transparência públi
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🗂️ DER (Diagrama Entidade-Relacionamento)
 
-| Categoria | Tecnologia |
-|------------|-------------|
-| Banco de Dados | **MySQL 8.0+** |
-| Modelagem | **MySQL Workbench** |
-| Scripts SQL | **DDL / DML / DQL / DTL** |
-| Versionamento | **Git / GitHub** |
+<p align="center">
+  <img src="./er.png" alt="Diagrama do Banco de Dados" width="600"/>
+</p>
 
 ---
+
+## 💡 Tecnologias Utilizadas
+- **MySQL Workbench** – Modelagem e geração do script SQL.  
+- **MySQL Server** – Execução e gerenciamento do banco.  
+- **Git & GitHub** – Controle de versão e colaboração.  
+
+---
+
+## 👩‍💻 Autoria
+Projeto desenvolvido por **Lorena Lira**, **Ricardo Rafael** e **Maria Clara** 💚  
+Acadêmicos de **Análise e Desenvolvimento de Sistemas**.
+
+---
+
+## 🪴 Licença
+Este projeto é de uso acadêmico. Você pode consultar, estudar e adaptar livremente, desde que mantenha os créditos do autor.
