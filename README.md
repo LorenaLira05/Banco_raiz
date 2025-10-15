@@ -1,50 +1,69 @@
-# Banco de Dados – Programa de Aquisição e Distribuição de Sementes
+# 🌱 Banco de Dados – Programa de Aquisição e Distribuição de Sementes
 
-Descrição
-Este repositório contém o modelo relacional em MySQL para um sistema de gestão de pedidos, entregas e estoque de sementes.
-Ele permite controlar lotes, movimentações, entregas, fornecedores e armazéns, garantindo integridade e rastreabilidade.
+Este repositório contém o **modelo de banco de dados MySQL** do sistema do **Programa de Aquisição e Distribuição de Sementes**, voltado para o controle de **lotes, pedidos, entregas, fornecedores e estoques**, garantindo **transparência e eficiência** na gestão pública de sementes.
 
-# Estrutura do Banco
-Tabelas Principais
+---
 
-usuario: dados de usuários (CPF/CNPJ, endereço, perfil).
+## 🧭 Objetivo
 
-perfil_usuario: tipos de perfis (gestor, operador, agente).
+O banco de dados foi projetado para:
+- Gerenciar **lotes de sementes** desde o fornecedor até a entrega final;
+- Controlar **estoques por armazém** e **quantidades disponíveis**;
+- Registrar **pedidos e entregas**, com atualização automática via triggers;
+- Garantir **validações e integridade dos dados** com procedimentos e restrições;
+- Fornecer **views analíticas** para relatórios e dashboards de transparência.
 
-endereco: informações de endereço.
+---
 
-municipio e armazem: localidades e armazéns de armazenamento.
+## ⚙️ Regras de Negócio (Triggers)
 
-especies: espécies de sementes (ex.: milho, feijão).
+| Trigger | Função |
+|----------|--------|
+| **usuario_BEFORE_INSERT / UPDATE** | Impede cadastro com CPF e CNPJ juntos (ou nenhum dos dois) |
+| **estoque_BEFORE_UPDATE** | Bloqueia saldo negativo de estoque |
+| **pedido_BEFORE_UPDATE** | Impede finalizar pedido sem itens |
+| **entrega_AFTER_INSERT** | Atualiza estoque automaticamente após nova entrega |
 
-lote: lotes vinculados a espécies e usuários.
+Essas triggers garantem **integridade e coerência dos dados**.
 
-estoque: controle de quantidade disponível por armazém.
+---
 
-pedido e item_pedido: gerenciamento de pedidos e itens.
+## 🧠 Procedures Criadas
 
-entrega: registro de entregas realizadas.
+| Procedure | Descrição |
+|------------|------------|
+| **criar_pedido** | Cria novo pedido e retorna o ID gerado |
+| **criar_ordem_expedicao** | Registra uma nova ordem de expedição |
+| **registrar_entrega** | Registra entrega e valida a data (não permite datas futuras) |
+| **atualizar_status_entrega** | Atualiza o status de uma entrega existente |
+| **consultar_entregas_pedido** | Lista todas as entregas associadas a um pedido |
 
-fornecedor: informações sobre fornecedores.
+Esses procedimentos ajudam a **automatizar as operações do sistema**.
 
-destinatario: usuários que recebem pedidos.
+---
 
-log: histórico de operações.
+## 📊 Views Criadas
 
-estoque_lote e lote_pedido: tabelas de relacionamento.
+| View | Função |
+|------|--------|
+| **vw_total_por_especie** | Total distribuído por espécie de semente |
+| **vw_total_por_municipio** | Total distribuído por município |
+| **vw_historico_lote** | Histórico de entrada e saída por lote |
+| **vw_entregas_transparencia** | Consulta pública de entregas com município e status |
+| **vw_fornecedores_entregas** | Total de entregas realizadas por fornecedor |
+| **vw_status_entregas** | Quantidade de entregas por status |
 
-Triggers
+Essas views são ideais para **dashboards e relatórios de transparência pública**.
 
-trg_valida_cpf_cnpj_usuario: garante que um usuário tenha apenas CPF ou CNPJ, nunca ambos ou nenhum.
+---
 
-trg_estoque_no_negative: impede que a quantidade de estoque seja negativa.
+## 🛠️ Tecnologias Utilizadas
 
-Procedimentos Armazenados
+| Categoria | Tecnologia |
+|------------|-------------|
+| Banco de Dados | **MySQL 8.0+** |
+| Modelagem | **MySQL Workbench** |
+| Scripts SQL | **DDL / DML / DQL / DTL** |
+| Versionamento | **Git / GitHub** |
 
-registrar_entrega – insere uma entrega com validações de integridade.
-
-registrar_pedido – cria pedidos garantindo que usuário, fornecedor e status existam.
-
-atualizar_status_entrega – atualiza o status de uma entrega existente.
-
-consultar_entregas_pedido – lista todas as entregas de um pedido específico.
+---
