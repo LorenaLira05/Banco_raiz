@@ -1,4 +1,4 @@
-CREATE TRIGGER trg_valida_pedido_before_update
+CREATE TRIGGER pedido_BEFORE_UPDATE
 BEFORE UPDATE ON pedido
 FOR EACH ROW
 BEGIN
